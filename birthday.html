@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something For You 🎀</title>
+<style>
+  :root{
+    --pink: #ffd6e8;
+    --pink-deep: #ff8fb3;
+    --cream: #fff7f2;
+    --lilac: #e6d9ff;
+    --butter: #fff1b8;
+    --mint: #d4f7e0;
+    --text: #6b4460;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(160deg, var(--cream), var(--pink) 60%, var(--lilac));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .page{
+    display:none;
+    text-align:center;
+    padding: 40px 30px;
+    max-width: 480px;
+    position:relative;
+    z-index: 5;
+    animation: floatIn .7s ease;
+  }
+  .page.active{ display:block; }
+  @keyframes floatIn{
+    from{ opacity:0; transform: translateY(20px) scale(.95); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+  h1{
+    font-family: 'Brush Script MT', cursive;
+    color: var(--pink-deep);
+    font-size: 2.6rem;
+    margin: 0 0 10px;
+    text-shadow: 2px 2px 0 #fff;
+  }
+  p{
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  button{
+    margin-top: 24px;
+    padding: 16px 34px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff9ec4, #ffb6d5);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #e77599, 0 8px 18px rgba(255,140,180,.35);
+    transition: transform .15s ease, box-shadow .15s ease;
+    font-family: inherit;
+  }
+  button:hover{ transform: translateY(-3px); }
+  button:active{
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #e77599, 0 4px 10px rgba(255,140,180,.35);
+  }
+
+  /* PAGE 1 - plain */
+  #page1 h1{ font-size: 2rem; font-family: inherit; color:#a3729b; }
+  #page1 p{ opacity:.75; }
+
+  /* PAGE 2 - cutesy */
+  .stickers{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index: 1;
+  }
+  .sticker{
+    position:absolute;
+    font-size: 2rem;
+    animation: bob 3.5s ease-in-out infinite;
+    opacity:.7;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0) rotate(-5deg); }
+    50%{ transform: translateY(-14px) rotate(8deg); }
+  }
+  .card{
+    background: rgba(255,255,255,.65);
+    backdrop-filter: blur(6px);
+    border-radius: 28px;
+    padding: 36px 28px;
+    border: 2px dashed var(--pink-deep);
+    box-shadow: 0 10px 30px rgba(255,150,190,.3);
+  }
+   
+
+  .gif-container {
+    width: 150px;
+    margin: 20px auto;
+}
+  /* PAGE 3 - gift */
+  .gift-box{ font-size: 4.5rem; margin-bottom: 4px; animation: wiggle 1.6s ease-in-out infinite; }
+  @keyframes wiggle{
+    0%,100%{ transform: rotate(-4deg); }
+    50%{ transform: rotate(4deg); }
+  }
+  .gift-text{
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    margin: 14px 0 6px;
+  }
+  .heart{
+    position:absolute;
+    bottom:-20px;
+    font-size: 1.4rem;
+    animation: rise 4s linear infinite;
+    opacity:.85;
+    z-index:1;
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) scale(.8); opacity:0; }
+    10%{ opacity:1; }
+    100%{ transform: translateY(-100vh) scale(1.1); opacity:0; }
+  }
+</style>
+</head>
+
+<audio id="birthdayMusic" >
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<body>
+
+  <!-- PAGE 1: plain simple -->
+  <div class="page active" id="page1">
+    <h1>Namastee🙏🙏🥀</h1>
+    <p>there's something waiting for you...</p>
+    <button onclick="showPage('page2');openGift()">Open it</button>
+  </div>
+
+  <!-- PAGE 2: happy birthday, cutesy -->
+  <div class="page" id="page2">
+    <div class="stickers" id="stickerLayer"></div>
+  <div class="gif-container">
+      <div class="tenor-gif-embed"
+          data-postid="25097206"
+          data-share-method="host"
+          data-aspect-ratio="0.99375"
+          data-width="100%">
+          <a href="https://tenor.com/view/happy-birthday-gif-25097206">
+              Happy Birthday Sticker
+          </a>
+      </div>
+  </div>
+
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>    <div class="card">
+      <h1>Happy Birthday Beteyyyy🎉🥀🎂</h1>
+      <p>Etlundhii websiteee..shock ayyavaa kukkaaa🎈<br>Anyway, hope your day is as cute as you are😘🌸</p>
+      <button onclick="showPage('page3')">click for your present 🎁</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3: gift reveal -->
+  <div class="page" id="page3">
+    <div class="gif-container">
+      <div class="tenor-gif-embed" data-postid="23498696" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/kukuk-happy-birthday-chicky-gif-23498696">Kukuk Happy Birthday Sticker</a>from <a href="https://tenor.com/search/kukuk-stickers">Kukuk Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+    <div class="gift-text">i am your gift, Pandhi kukka 🤣🤣💗</div>
+    <p>no returns, no refunds, you're stuck with me forever 😚</p>
+    <button class="back-btn" onclick="showPage('page2')">← back</button>
+  </div>
+
+<script>
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(id === 'page2') spawnStickers();
+    if(id === 'page3') spawnHearts();
+  }
+
+  function spawnStickers(){
+    const layer = document.getElementById('stickerLayer');
+    if(layer.childElementCount) return; // only once
+    const emojis = ['🎀','🧸','🍰','✨','💕','🍡','🌷','🍭','⭐'];
+    for(let i=0;i<14;i++){
+      const s = document.createElement('div');
+      s.className = 'sticker';
+      s.textContent = emojis[i % emojis.length];
+      s.style.left = Math.random()*90 + '%';
+      s.style.top = Math.random()*90 + '%';
+      s.style.animationDelay = (Math.random()*2) + 's';
+      s.style.fontSize = (1.4 + Math.random()*1.4) + 'rem';
+      layer.appendChild(s);
+    }
+  }
+
+  function spawnHearts(){
+    const body = document.body;
+    const emojis = ['💗','💖','💕','🐘'];
+    setInterval(() => {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      h.style.left = Math.random()*100 + '%';
+      h.style.animationDuration = (3 + Math.random()*3) + 's';
+      body.appendChild(h);
+      setTimeout(()=> h.remove(), 7000);
+    }, 500);
+  }
+
+  function openGift() {
+    const music = document.getElementById("birthdayMusic");
+    music.currentTime = 0;
+    music.play();
+}
+</script>
+</body>
+</html>
